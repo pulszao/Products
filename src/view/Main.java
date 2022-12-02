@@ -29,15 +29,80 @@ public class Main {
             switch(opcao)
             {
                 case 1: // Inserir produto na tabela
+                    System.out.println("Insira a descrição do produto");
+                    descricaoNovoProduto = entrada.nextLine();
+                    System.out.println("Insira o codigo do produto");
+                    codigoNovoProduto = entrada.nextLine();
+                    System.out.println("Insira o preco de custo");
+                    precoNovoProduto = entrada.nextDouble();
+                    System.out.println("Insira o tipo do produto:\n(0) - Acessorio\n(1) - Eletrônico\n(2) - Livro\n");
+                    tipoNovoProduto = entrada.nextInt();
+
+                    if (tipoNovoProduto == 0) {
+                        // add Acessorio
+                        novoProduto = new Acessorio(precoNovoProduto, codigoNovoProduto, descricaoNovoProduto);
+                    } else if (tipoNovoProduto == 1) {
+                        // add Eletronico
+                        novoProduto = new Eletronico(precoNovoProduto, codigoNovoProduto, descricaoNovoProduto);
+                    } else if (tipoNovoProduto == 2) {
+                        // add Livro
+                        novoProduto = new Livro(precoNovoProduto, codigoNovoProduto, descricaoNovoProduto);
+                    }
+
+                    try {
+                        loja.adicionaProduto(novoProduto);
+                    } catch (ExcecaoDeLojaCheia e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     break;
 
                 case 2: // Consultar produtos cadastrados
+                    System.out.println("Produtos cadastrados:");
+                    produtos = loja.getProdutos();
+
+                    for (Produto prod : produtos) {
+                        codigo = prod.getCodigo();
+                        descricao = prod.getDescricao();
+                        System.out.printf("%s - %s\n", codigo, descricao);
+                    }
+
                     break;
 
                 case 3: // Consultar preço de um produto
+                    System.out.println("Informe o codigo do produto:");
+                    codigo = entrada.nextLine();
+
+                    try {
+                        novoProduto = loja.getProduto(codigo);
+                        System.out.println("Informações do produto:\n");
+                        System.out.println(novoProduto.getDescricao());
+                        System.out.printf("Preco de venda: %s\n",novoProduto.getPrecoFinal());
+                        System.out.printf("Preco de custo: %s\n",novoProduto.getPrecoDeCusto());
+                    } catch (ProdutoNaoEncontrado e) {
+                        e.getMessage();
+                    }
+
                     break;
 
                 case 4: //Consultar produtos em uma faixa de preco
+                    System.out.println("Informe o valor minimo:\n");
+                    valorMin = entrada.nextDouble();
+                    System.out.println("Informe o valor maximo:\n");
+                    valorMax = entrada.nextDouble();
+
+                    try {
+                        produtos = loja.getProdutos(valorMin, valorMax);
+                        for (Produto prod : produtos) {
+                            codigo = prod.getCodigo();
+                            descricao = prod.getDescricao();
+                            precoNovoProduto = prod.getPrecoFinal();
+                            System.out.printf("%s - %s - %s\n", codigo, descricao, precoNovoProduto);
+                        }
+                    } catch (ProdutoNaoEncontrado e) {
+                        e.getMessage();
+                    }
+
                     break;
             }
             System.out.println("0.Sair");
