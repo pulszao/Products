@@ -1,11 +1,11 @@
 package model;
 
 /**
-    Classe abstrata utilizada para representar os produtos e seus atributos obrigatórios
-*/
-abstract class Produto {
+ Classe abstrata utilizada para representar os produtos e seus atributos obrigatórios
+ */
+public abstract class Produto {
+    protected double margem = 1.3; // margem padrao eh de 30%
     protected double precoDeCusto;
-    protected double margem;
     protected String codigo;
     protected String descricao;
 
