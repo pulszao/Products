@@ -4,6 +4,7 @@
 //
 
 package model;
+import excecoes.CodigoExistente;
 import excecoes.ExcecaoDeLojaCheia;
 import excecoes.ProdutoNaoEncontrado;
 
@@ -25,6 +26,14 @@ public class Loja implements Serializable {
             throw new ExcecaoDeLojaCheia();
         } else {
             produtos.add(produtoAIncluir);
+        }
+    }
+
+    public void verificaCodigo(String codigo) throws CodigoExistente {
+        for (Produto prod : produtos) {
+            if (prod.getCodigo().equals(codigo)) {
+                throw new CodigoExistente();
+            }
         }
     }
 

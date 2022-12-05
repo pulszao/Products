@@ -1,9 +1,8 @@
 package model;
 
-/**
- Classe abstrata utilizada para representar os produtos e seus atributos obrigatórios
- */
-public abstract class Produto {
+import java.io.Serializable;
+
+public abstract class Produto implements Serializable {
     protected double margem = 1.3; // margem padrao eh de 30%
     protected double precoDeCusto;
     protected String codigo;

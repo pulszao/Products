@@ -17,28 +17,30 @@ public class PersistenciaComSerializacao {
 
     public void salvarLoja(Loja loja) {
         try {
-            FileOutputStream fs = new FileOutputStream("loja.obj");
+            FileOutputStream fs = new FileOutputStream("produtos.obj");
             ObjectOutputStream escreve = new ObjectOutputStream(fs);
             escreve.writeObject(loja);
             escreve.flush();
             escreve.close();
-        } catch (IOException var4) {
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
             System.out.println("Erro de IO");
         }
 
     }
 
-    public Loja recuperarAcervo() {
-        Loja tempLoja = new Loja(100);
+
+    public Loja recuperarLoja() {
+        Loja tempLoja = new Loja(30);
 
         try {
-            FileInputStream fs = new FileInputStream("loja.obj");
+            FileInputStream fs = new FileInputStream("produtos.obj");
             ObjectInputStream leitor = new ObjectInputStream(fs);
-            tempLoja = (Loja)leitor.readObject();
+            tempLoja = (Loja) leitor.readObject();
             leitor.close();
-        } catch (IOException var4) {
+        } catch (IOException e) {
             System.out.println("Erro de IO");
-        } catch (ClassNotFoundException var5) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Erro de Classe");
         }
 
