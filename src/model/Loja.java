@@ -12,6 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
+/**
+ Classe para armazenar todos os produtos cadastrados
+ @author Lucas Pulsz
+ */
 public class Loja implements Serializable {
     private int estoqueMax;
     private ArrayList<Produto> produtos;
@@ -21,6 +26,10 @@ public class Loja implements Serializable {
         this.produtos = new ArrayList<Produto>();
     }
 
+    /**
+     Método que adiciona um novo produto à loja
+     @param produtoAIncluir novo produto a ser incluido
+     */
     public void adicionaProduto(Produto produtoAIncluir) throws ExcecaoDeLojaCheia {
         if (produtos.size() == estoqueMax) {
             throw new ExcecaoDeLojaCheia();
@@ -29,6 +38,10 @@ public class Loja implements Serializable {
         }
     }
 
+    /**
+     Método para verificar se já existe um produto com o código informado no cadastro
+     @param codigo codigo a ser verificado
+     */
     public void verificaCodigo(String codigo) throws CodigoExistente {
         for (Produto prod : produtos) {
             if (prod.getCodigo().equals(codigo)) {
@@ -41,6 +54,11 @@ public class Loja implements Serializable {
         return this.produtos;
     }
 
+    /**
+     Método que retorna todos os produtos dentro de uma faixa de valor
+     @param valorMin valor mínimo na pesquisa
+     @param valorMax valor mínimo na pesquisa
+     */
     public  ArrayList<Produto> getProdutos(double valorMin, double valorMax) throws ProdutoNaoEncontrado {
         ArrayList<Produto> auxProdutos = new ArrayList<Produto>();
 
@@ -57,6 +75,10 @@ public class Loja implements Serializable {
         }
     }
 
+    /**
+     Método que retorna um produto com o código informado
+     @param codigo código do produto desejado
+     */
     public  Produto getProduto(String codigo) throws ProdutoNaoEncontrado {
         for (Produto prod : produtos) {
             if (Objects.equals(prod.getCodigo(), codigo)) {

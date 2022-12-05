@@ -4,6 +4,11 @@
 //
 
 package excecoes;
+
+/**
+ Classe de Exception que identifica quando o código do produto já está associado a um produto
+ @author Lucas
+ */
 public class CodigoExistente extends Exception {
     public CodigoExistente() {}
 

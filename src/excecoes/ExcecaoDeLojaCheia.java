@@ -5,6 +5,10 @@
 
 package excecoes;
 
+/**
+ Classe de Exception que identifica quando a loja já atingiu o limite pré definido
+ @author Lucas
+ */
 public class ExcecaoDeLojaCheia extends Exception {
     public ExcecaoDeLojaCheia() {}
 

@@ -13,8 +13,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class PersistenciaComSerializacao {
 
+/**
+ Classe que realiza o salvamento e recuperação dos dados do projeto em um arquivo de objeto
+ @author Lucas
+ */
+public class PersistenciaComSerializacao {
+    /**
+     Método que realiza o salvamento do objeto Loja
+     @param loja classe Loja à ser salva
+     */
     public void salvarLoja(Loja loja) {
         try {
             FileOutputStream fs = new FileOutputStream("produtos.obj");
@@ -30,6 +38,10 @@ public class PersistenciaComSerializacao {
     }
 
 
+    /**
+     Método que realiza a recuperação dos dados salvos
+     @return retorna a Classe Loja
+     */
     public Loja recuperarLoja() {
         Loja tempLoja = new Loja(30);
 

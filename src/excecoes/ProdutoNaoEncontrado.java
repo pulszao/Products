@@ -5,6 +5,10 @@
 
 package excecoes;
 
+/**
+ Classe de Exception que identifica quando o produto não foi encontrado
+ @author Lucas
+ */
 public class ProdutoNaoEncontrado extends Exception {
     public ProdutoNaoEncontrado() {}
 

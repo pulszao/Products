@@ -2,6 +2,10 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ Classe abstrata utilizada para representar os produtos e seus atributos obrigatórios
+ @author Lucas Pulsz
+ */
 public abstract class Produto implements Serializable {
     protected double margem = 1.3; // margem padrao eh de 30%
     protected double precoDeCusto;
@@ -20,6 +24,10 @@ public abstract class Produto implements Serializable {
         return precoDeCusto;
     }
 
+    /**
+     Função para retornar preço final do produto
+     @return preço de custo x margem de lucro
+     */
     public double getPrecoFinal() {
         return precoDeCusto * margem;
     }
