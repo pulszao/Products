@@ -95,7 +95,8 @@ public class Main {
                         System.out.printf("Preco de venda: %s\n",novoProduto.getPrecoFinal());
                         System.out.printf("Preco de custo: %s\n",novoProduto.getPrecoDeCusto());
                     } catch (ProdutoNaoEncontrado e) {
-                        e.getMessage();
+                        // e.getMessage();
+                        System.out.println("Não existe produto com este código!");
                     }
 
                     break;
@@ -112,7 +113,7 @@ public class Main {
                             codigo = prod.getCodigo();
                             descricao = prod.getDescricao();
                             precoNovoProduto = prod.getPrecoFinal();
-                            System.out.printf("%s - %s - %s\n", codigo, descricao, precoNovoProduto);
+                            System.out.printf("%s - %s - %s(preço final)\n", codigo, descricao, precoNovoProduto);
                         }
                     } catch (ProdutoNaoEncontrado e) {
                         e.getMessage();

@@ -13,7 +13,7 @@ public class CodigoExistente extends Exception {
     public CodigoExistente() {}
 
     public String getMessage() {
-        return "Já existe um produto com este codigo";
+        return "Já existe um produto com este codigo!";
     }
 }
 

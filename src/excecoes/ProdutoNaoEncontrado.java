@@ -13,7 +13,7 @@ public class ProdutoNaoEncontrado extends Exception {
     public ProdutoNaoEncontrado() {}
 
     public String getMessage() {
-        return "Produto não encontrado";
+        return "Produto não encontrado!";
     }
 }
 
